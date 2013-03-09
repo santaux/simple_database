@@ -11,7 +11,7 @@ module SimpleDatabase
     def connect
       unless File.exists? source[:path]
         puts "File #{source[:path]} for table #{name} does not exist! Create empty table file..."
-        `touch #{source[:path]}`
+        FileUtils.touch source[:path]
       end
       @descriptor ||= File.open(source[:path], "rb")
     end
