@@ -12,7 +12,7 @@ module SimpleDatabase
       limit = limit_opts(opts)
       result = []
 
-      (1..tbl.rows_count-1).each do |i|
+      (0..tbl.rows_count-1).each do |i|
         row = tbl.get_row i
 
         if row[column] == value

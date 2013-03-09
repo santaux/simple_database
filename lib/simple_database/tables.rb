@@ -1,15 +1,3 @@
-
-#module SimpleDatabase
-#  module Connector
-#    class Database
-#      class << self
-#      end
-#
-#      private_instance_methods << :new
-#    end
-#  end
-#end
-
 module SimpleDatabase
   class Table
     attr_reader :name, :source, :columns, :is_loaded, :descriptor, :row_size
@@ -44,7 +32,7 @@ module SimpleDatabase
       row_array = unpack row_binary
       row_hash = {}
       columns.each do |name, opts|
-        row_hash[name] = row_array[opts[:index]]
+        row_hash[name] = convert(row_array[opts[:index]], opts[:type])
       end
       row_hash[:offset] = index
       row_hash
@@ -70,6 +58,14 @@ module SimpleDatabase
           "A#{size}"
         when :datetime
           "q"
+      end
+    end
+
+    def convert(value, type)
+      if type == :datetime
+        Time.at(value).to_date
+      else
+        value
       end
     end
   end

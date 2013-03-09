@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = SimpleDatabase::VERSION
   spec.authors       = ["santaux"]
   spec.email         = ["santaux@gmail.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.description   = %q{Gem to work with text database}
+  spec.summary       = %q{Gem to work with text database}
   spec.homepage      = ""
   spec.license       = "MIT"
 

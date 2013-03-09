@@ -1,7 +1,3 @@
-
-lib = File.expand_path('../../lib', __FILE__)
-$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-
 require "simple_database/version"
 require "simple_database/tables"
 require "simple_database/dsl"
@@ -22,6 +18,3 @@ module SimpleDatabase extend self
     Query.new(connection)
   end
 end
-
-# Class alias to pass the test file:
-Database = SimpleDatabase
