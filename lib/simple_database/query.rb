@@ -18,7 +18,10 @@ module SimpleDatabase
         if row[column] == value
           result << row
 
-          break if limit_is_over?(limit)
+          if limit
+            limit = limit - 1
+            break if limit.zero?
+          end
         end
       end
 
@@ -26,13 +29,6 @@ module SimpleDatabase
     end
 
     private
-
-    def limit_is_over?(limit)
-      if limit
-        limit = limit - 1
-        limit.zero?
-      end
-    end
 
     def limit_opts(opts)
       opts[:limit]
